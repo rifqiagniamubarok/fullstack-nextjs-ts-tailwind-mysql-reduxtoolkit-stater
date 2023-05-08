@@ -1,26 +1,38 @@
 import classNames from 'classnames';
-import React, { FC } from 'react';
+import * as React from 'react';
+import { FC } from 'react';
 
-const ButtonVariant = ['contained', 'outlined', 'ghost'] as const;
+const ButtonVariant = ['contained', 'outlined', 'text'] as const;
 
 interface Props {
   children: string;
   variant?: (typeof ButtonVariant)[number];
+  type?: 'button' | 'submit' | 'reset';
+  color?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button: FC<Props> = (props): JSX.Element => {
-  const { children, variant = 'contained' } = props;
+  const {
+    children,
+    variant = 'contained',
+    onClick,
+    type = 'button',
+    color = 'primary',
+  } = props;
+
   const variantStyle = {
-    contained:
-      'py-1 px-2 rounded-sm bg-primary-main text-white hover:bg-opacity-75',
-    outlined:
-      'py-1 px-2 rounded-sm border borde-3 border-primary-main text-primary-main hover:bg-primary-soft hover:bg-opacity-25',
-    ghost:
-      'py-1 px-2 rounded-sm text-primary-main hover:bg-primary-soft hover:bg-opacity-25',
+    contained: `py-1 px-2 rounded-sm bg-${color} text-white hover:bg-opacity-75`,
+    outlined: ` py-1 px-2 rounded-sm border border-3 border-${color} text-${color} hover:bg-${color} hover:bg-opacity-10`,
+    text: `py-1 px-2 rounded-sm text-${color} hover:bg-${color} hover:bg-opacity-10`,
   };
 
   return (
-    <button className={classNames(variantStyle[variant], 'font-semibold')}>
+    <button
+      className={classNames(variantStyle[variant], 'font-semibold')}
+      onClick={onClick}
+      type={type}
+    >
       {children}
     </button>
   );
