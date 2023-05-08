@@ -23,9 +23,34 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="">
-        <div className="min-h-screen min-w-screen flex justify-center items-center bg-slate-50 dark:bg-slate-800">
+        <div className="min-h-screen min-w-screen flex justify-center items-center bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-50">
           <div className="flex flex-col items-center gap-2">
-            <p className="text-slate-800 dark:text-slate-50 text-3xl">Hello!</p>
+            <p className="text-3xl font-bold">Stater For</p>
+            <p className="text-2xl font-bold">
+              Fullstack NextJS + TailwindCSS + Typescript + Redux + MYSQL
+            </p>
+
+            <Link
+              href={
+                'https://github.com/rifqiagniamubarok/fullstack-nextjs-ts-tailwind-mysql-reduxtoolkit-stater'
+              }
+              passHref
+              legacyBehavior
+            >
+              <a target="_blank" rel="noopener noreferrer">
+                <p className="hover:underline underline-offset-auto">
+                  See the repository
+                </p>
+              </a>
+            </Link>
+
+            <Link href={'/implementation'}>
+              <button className="bg-slate-800 dark:bg-slate-50 text-slate-50 dark:text-slate-800 p-2 rounded-md">
+                Implementation
+              </button>
+            </Link>
+
+            {/* <p className="text-slate-800 dark:text-slate-50 text-3xl">Hello!</p>
             <button
               onClick={handleThemeMode}
               className="dark:text-slate-800 text-slate-50 bg-slate-800 dark:bg-slate-50 font-semibold px-2 py-1 rounded-sm hover:bg-opacity-80"
@@ -34,7 +59,7 @@ export default function Home() {
             </button>
             <Link href="example" className="text-slate-800 dark:text-slate-50">
               to Example page
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
